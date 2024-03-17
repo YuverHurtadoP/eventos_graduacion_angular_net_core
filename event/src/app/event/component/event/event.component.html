@@ -1,0 +1,71 @@
+<div   style="margin-top: 200px;">
+ <div [formGroup]="searchForm" class="spaceBottom" style=" margin-left: 40%; margin-right: 30%;">
+    <div style="display: flex;">
+      <div style="flex: 1; margin-right: 10px;">
+        <label for="">Que desea buscar?:</label>
+        <input type="text" (keyup)="filter()" formControlName="findSearch" class="form-control" id="document" placeholder="Escriba" name="document" >
+        <div class="error" *ngIf="searchForm.get('findSearch')?.touched && searchForm.get('findSearch')?.hasError?.('havespace')">{{msg}}</div>
+
+      </div>
+      <div style="flex: 1;">
+        <label for="">Filtrar por:</label>
+        <select formControlName="typeFiler" class="form-select" aria-label="Default select example">
+          <option value="1">--selección--</option>
+          <option value="2">Nombre Institución</option>
+          <option value="3">Direccón</option>
+          <option value="4">Número de alumnos</option>
+          <option value="5">Costo del servicio</option>
+          <option value="6">Fecha de inicio</option>
+
+        </select>
+
+      </div>
+    </div>
+
+  </div>
+
+<div class="container">
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Institución</th>
+        <th>Dirección</th>
+        <th>Número de alumnos</th>
+        <th>Hora de inicio</th>
+        <th>Costo del servicio</th>
+        <th>Fecha de creación</th>
+        <th>Fecha de actualización</th>
+        <th></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listEventResponseDto; let i = index" [ngClass]="{ 'even-row': i % 2 === 0, 'odd-row': i % 2 !== 0 }">
+        <td>{{ item.id }}</td>
+        <td>{{ item.institutionName }}</td>
+        <td>{{ item.institutionAddress }}</td>
+        <td>{{ item.numberOfStudents }}</td>
+        <td>{{ item.startTime| date:'dd/MM/yyyy' }}</td>
+        <td>{{ item.servicePrice| currency:'USD ' }}</td>
+        <td>{{ item.creationDate| date:'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td>{{ item.updateDate| date:'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td>
+          <button mat-icon-button color="warn" style="border: none;background-color: transparent;"  aria-label="Eliminar evento" (click)="delete(item.id)"  >
+            <mat-icon style="color: red;">delete</mat-icon>
+          </button>
+
+          <button (click)="openModalEdit(item.id, item.institutionName, item.institutionAddress, item.numberOfStudents, item.servicePrice, item.startTime,item.email)" style="display: inline-flex;border: none; background-color: transparent;"class="save" mat-button >
+            <mat-icon style=" color: green; ">edit</mat-icon></button>
+
+
+        </td>
+
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>

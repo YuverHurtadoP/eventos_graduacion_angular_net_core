@@ -1,0 +1,11 @@
+CREATE TABLE Event (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    InstitutionName NVARCHAR(255) NOT NULL,
+    InstitutionAddress NVARCHAR(255) NOT NULL,
+    NumberOfStudents INT NOT NULL,
+    StartTime DATETIME NOT NULL,
+    ServicePrice DECIMAL(10, 2) NOT NULL,
+    Email NVARCHAR(255),
+    CreationDate DATETIME DEFAULT NULL,
+    UpdateDate DATETIME DEFAULT NULL
+);

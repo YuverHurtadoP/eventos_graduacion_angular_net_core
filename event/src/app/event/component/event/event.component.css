@@ -1,0 +1,19 @@
+.even-row {
+  background-color: #f2f2f2; /* Color de fila para las filas pares */
+}
+
+.odd-row {
+  background-color: #ffffff; /* Color de fila para las filas impares */
+}
+.even-row td,
+.odd-row td {
+  border: none; /* Eliminar bordes */
+  padding: 8px; /* Añadir espacio entre celdas */
+}
+
+.spaceBottom{
+  margin-bottom: 3%;
+}
+.error{
+  color: red;
+}

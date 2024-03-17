@@ -1,0 +1,106 @@
+<div class="mat-dialog-container">
+  <div class="card">
+    <div class="card-header   text-white text-center" >
+      <h4 class="mb-0">
+        <mat-icon style="color: white; font-size: 2rem;">how_to_reg</mat-icon> Formulario de Eventos
+      </h4>
+    </div>
+    <div class="card-body">
+
+      <form   [formGroup]="formRegister"   >
+
+
+
+        <div class="columnDivision"  >
+          <!--column 1-->
+
+          <div class=" spaceBottom">
+            <input type="text" formControlName="institution" class="form-control" id="document" placeholder="Nombre institución" name="document" >
+            <div class="error" *ngIf="formRegister.get('institution')?.touched && formRegister.get('institution')?.hasError?.('havespace')">{{msg}}</div>
+            <div class="error" *ngIf="formRegister.get('institution')?.touched && formRegister.get('institution')?.hasError?.('pattern')">{{msg}}</div>
+
+          </div>
+         <!--column 2-->
+
+          <div class=" spaceBottom">
+            <input type="text" formControlName="institutionAddress" class="form-control" id="document" placeholder="Dirección institución" name="document" >
+            <div class="error" *ngIf="formRegister.get('institutionAddress')?.touched && formRegister.get('institutionAddress')?.hasError?.('havespace')">{{msg}}</div>
+            <div class="error" *ngIf="formRegister.get('institutionAddress')?.touched && formRegister.get('institutionAddress')?.hasError?.('pattern')">{{msg}}</div>
+
+          </div>
+
+        </div>
+
+
+        <div class="columnDivision"  >
+          <!--column 1-->
+
+          <div class=" spaceBottom">
+            <input type="text" (keyup)="calculateValue()" formControlName="numberOfStudents" class="form-control" id="document" placeholder="Nro. Estudiantes" name="document" >
+            <div class="error" *ngIf="formRegister.get('numberOfStudents')?.touched && formRegister.get('numberOfStudents')?.hasError?.('havespace')">{{msg}}</div>
+            <div class="error" *ngIf="formRegister.get('numberOfStudents')?.touched && formRegister.get('numberOfStudents')?.hasError?.('pattern')">{{msg}}</div>
+
+          </div>
+         <!--column 2-->
+
+         <div class="spaceBottom">
+          <select (change)="calculateValue()" formControlName="serviceEvent" class="form-select" aria-label="Default select example">
+            <option value="">---Incluir toga y birrete?---</option>
+            <option value="1">
+              SI
+            </option>
+            <option value="2">
+              NO
+            </option>
+          </select>
+          <div class="error" *ngIf="formRegister.get('serviceEvent')?.touched && formRegister.get('serviceEvent')?.hasError?.('havespace')">{{msg}}</div>
+      </div>
+        </div>
+
+
+
+        <div class="columnDivision"  >
+          <!--column 1-->
+
+          <div class=" spaceBottom">
+            <input type="text" formControlName="servicePrice" class="form-control" id="document" placeholder="Valor del servicio" name="document" readonly>
+            <div class="error" *ngIf="formRegister.get('servicePrice')?.touched && formRegister.get('servicePrice')?.hasError?.('havespace')">{{msg}}</div>
+            <div class="error" *ngIf="formRegister.get('servicePrice')?.touched && formRegister.get('servicePrice')?.hasError?.('pattern')">{{msg}}</div>
+
+          </div>
+         <!--column 2-->
+
+         <div class=" spaceBottom">
+          <input type="date" formControlName="startTime" class="form-control" id="document" placeholder="Inicio de la Graduación" name="document" >
+          <div class="error" *ngIf="formRegister.get('startTime')?.touched && formRegister.get('startTime')?.hasError?.('havespace')">{{msg}}</div>
+
+
+        </div>
+
+        </div>
+
+        <div class="columnDivision"  >
+          <!--column 1-->
+
+          <div class=" spaceBottom">
+            <input type="text" formControlName="email" class="form-control" id="document" placeholder="Correo" name="document"  >
+            <div class="error" *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError?.('havespace')">{{msg}}</div>
+            <div class="error" *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError?.('email')">El corre no es valido</div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div style="display: grid;place-items: center; margin-bottom:3px ; ">
+          <button (click)="save()"  class="btn btn-primary btn-block"  style="background-color: #207cca;" >Guardar</button>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+</div>
